@@ -1,0 +1,18 @@
+export default class Init {
+  public name = 'init'
+  public description = '初始化仓库'
+  ctx: any
+  constructor(ctx: any) {
+    // console.log(ctx)
+    this.ctx = ctx
+    // console.log('啊哈哈哈哈')
+    process.on('exit', () => {
+      // success(`process exit remove template: ${this.tempFolderName}`);
+      //
+    })
+  }
+
+  public action() {
+    console.log('初始化项目')
+  }
+}

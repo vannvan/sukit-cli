@@ -1,0 +1,37 @@
+{
+  "name": "react-easy-cli",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/vannvan/react-easy-cli#readme",
+  "bugs": {
+    "url": "https://github.com/vannvan/react-easy-cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vannvan/react-easy-cli.git"
+  },
+  "license": "ISC",
+  "author": "vannvan",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "cli": "ts-node-esm -T src/bin/index.ts",
+    "start": "tsc -b --verbose --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "chalk": "4.1.2"
+  },
+  "devDependencies": {
+    "@artus/tsconfig": "^1.0.1",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^18.16.0",
+    "commander": "^10.0.1",
+    "glob": "7",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
