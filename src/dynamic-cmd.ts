@@ -35,26 +35,32 @@ export default class DynamicCMD {
   async genarateCommand(): Promise<void> {
     const commandList = glob.sync(`${path.join(__dirname, './command')}/*.?(jsx|js|ts)`)
 
-    let command = null
+    const program = new Command()
+
+    program.name('easy').description('easy is a React.js plugin').version(this.version)
 
     try {
-      const matchCmd = commandList.find((item) => new RegExp(process.argv[2]).test(item))
-      command = await import(matchCmd)
+      // 执行具体有效的命令
+      const matchCmd =
+        process.argv[2] && commandList.find((item) => new RegExp(process.argv[2]).test(item))
+      const Command = await import(matchCmd)
+      const cmd = new Command.default()
+      program
+        .command(cmd.name)
+        .description(cmd.description)
+        .action((_str: string, _options) => {
+          cmd.action(_options.args)
+        })
     } catch (error) {
-      command = await import(`${path.join(__dirname, './command/help.js')}`)
+      // 什么都没传会走到这里
+      for (let i = 0; i < commandList.length; i++) {
+        const item = commandList[i]
+        const Command = await import(item)
+        const cmd = new Command.default()
+        program.command(cmd.name).description(cmd.description)
+      }
+    } finally {
+      program.parse()
     }
-
-    const cmd = new command.default()
-    const program = new Command()
-    program
-      .command(cmd.name)
-      .description(cmd.description)
-      .action((str: string, options: { first: any; separator: any }) => {
-        const limit = options.first ? 1 : undefined
-        console.log('limit', limit)
-        console.log('str', str)
-        cmd.action()
-      })
-    program.parse()
   }
 }

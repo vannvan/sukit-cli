@@ -1,17 +1,18 @@
-export default class Help {
-  public name = 'help'
-  public description = '帮助'
+export default class Clear {
+  public name = 'clear'
+  public description = '清除缓存'
   ctx: any
   constructor(ctx: any) {
     // console.log(ctx)
     this.ctx = ctx
+    // console.log('啊哈哈哈哈')
     process.on('exit', () => {
       // success(`process exit remove template: ${this.tempFolderName}`);
       //
     })
   }
 
-  action(args: string[]) {
-    console.log('帮助', args)
+  public action(args: string[]) {
+    console.log('清除缓存', args)
   }
 }

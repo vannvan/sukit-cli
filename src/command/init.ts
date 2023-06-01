@@ -12,7 +12,7 @@ export default class Init {
     })
   }
 
-  public action() {
-    console.log('初始化项目')
+  public action(args: string[]) {
+    console.log('初始化项目', args)
   }
 }
