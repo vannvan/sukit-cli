@@ -10,9 +10,8 @@
 
 ## TOTO
 
-- [ ]--
 
 ## 📝 License
 
-Copyright © 2023 vannvan.
+Copyright © 2023 vannvan.  
 This project is MIT licensed.
