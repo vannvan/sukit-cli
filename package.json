@@ -1,15 +1,15 @@
 {
-  "name": "Sukit CLI",
+  "name": "sukit",
   "version": "0.0.1",
   "description": "Sukit CLI是一个一站式工程化工具集，提供前端工程化的完整工具集",
   "keywords": [],
-  "homepage": "https://github.com/vannvan/react-easy-cli#readme",
+  "homepage": "https://github.com/vannvan/sukit-cli#readme",
   "bugs": {
-    "url": "https://github.com/vannvan/react-easy-cli/issues"
+    "url": "https://github.com/vannvan/sukit-cli/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vannvan/react-easy-cli.git"
+    "url": "git+https://github.com/vannvan/sukit-cli.git"
   },
   "license": "MIT",
   "author": "vannvan",

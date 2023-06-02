@@ -8,9 +8,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default class DynamicCMD {
   public ctx: any
-  version: string
-  constructor(version: string) {
-    this.version = version
+  cliInfo: {
+    version: string
+    name: string
+    description: string
+  }
+  constructor(cliInfo: { version: string; name: string; description: string }) {
+    this.cliInfo = cliInfo
     this.ctx = this.createContext()
     this.init()
   }
@@ -20,13 +24,7 @@ export default class DynamicCMD {
   }
 
   createContext() {
-    // const context = Object.create(Context);
-    // context.config = readAllConfig();
-    // context.packageJson = this.props;
-    // context.app = this;
-    // context.services = {};
-    // context.commander = commander;
-    // return context;
+    //
   }
 
   /**
@@ -37,7 +35,10 @@ export default class DynamicCMD {
 
     const program = new Command()
 
-    program.name('easy').description('easy is a React.js plugin').version(this.version)
+    program
+      .name(this.cliInfo.name)
+      .description(this.cliInfo.description)
+      .version(this.cliInfo.version)
 
     try {
       // 执行具体有效的命令
