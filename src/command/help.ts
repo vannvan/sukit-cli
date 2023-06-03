@@ -1,4 +1,4 @@
-export default class Help {
+export default class Help implements ICommand {
   public name = 'help'
   public description = '帮助'
   ctx: any

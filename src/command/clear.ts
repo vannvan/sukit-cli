@@ -1,4 +1,4 @@
-export default class Clear {
+export default class Clear implements ICommand {
   public name = 'clear'
   public description = '清除缓存'
   ctx: any

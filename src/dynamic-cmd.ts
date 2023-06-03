@@ -5,6 +5,7 @@ import { dirname } from 'node:path'
 import { Log } from './libs/log.js'
 import commander, { Command } from 'commander'
 const __dirname = dirname(fileURLToPath(import.meta.url))
+import argv from './libs/dev/argv.js'
 
 export default class DynamicCMD {
   public ctx: any
@@ -40,10 +41,18 @@ export default class DynamicCMD {
       .description(this.cliInfo.description)
       .version(this.cliInfo.version)
 
+    const { commandInput } = argv()
+
     try {
       // 执行具体有效的命令
-      const matchCmd =
-        process.argv[2] && commandList.find((item) => new RegExp(process.argv[2]).test(item))
+      const matchCmd = commandList.find(
+        (item) => item.match(/(?<=d\/).+(?=.js)/)[0] === commandInput
+      )
+      const valid = ['-h', '--help', '-V', '--version']
+      if (!matchCmd && !valid.includes(commandInput)) {
+        Log.error(`${commandInput} 命令不存在，请使用 -h 查看有效命令`)
+        return
+      }
       const Command = await import(matchCmd)
       const cmd = new Command.default()
       program

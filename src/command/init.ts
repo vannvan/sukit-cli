@@ -1,4 +1,4 @@
-export default class Init {
+export default class Init implements ICommand {
   public name = 'init'
   public description = '初始化仓库'
   ctx: any
