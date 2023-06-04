@@ -22,7 +22,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "chalk": "4.1.2"
+    "@types/inquirer": "^9.0.3",
+    "chalk": "4.1.2",
+    "inquirer": "^9.2.7"
   },
   "devDependencies": {
     "@artus/tsconfig": "^1.0.1",

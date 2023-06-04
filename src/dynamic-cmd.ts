@@ -49,7 +49,7 @@ export default class DynamicCMD {
         (item) => item.match(/(?<=d\/).+(?=.js)/)[0] === commandInput
       )
       const valid = ['-h', '--help', '-V', '--version']
-      if (!matchCmd && !valid.includes(commandInput)) {
+      if (!matchCmd && !valid.includes(commandInput) && commandInput) {
         Log.error(`${commandInput} 命令不存在，请使用 -h 查看有效命令`)
         return
       }
