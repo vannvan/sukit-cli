@@ -1,6 +1,6 @@
 {
   "private": true,
-  "author": "van <shiww@mogulinker.com>",
+  "author": "vannvan",
   "scripts": {
     "dev": "umi dev",
     "build": "umi build",
